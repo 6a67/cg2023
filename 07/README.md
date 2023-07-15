@@ -1,0 +1,4 @@
+|         | Punkte | Anmerkung                                                                                                                           |
+|---------|--------|-------------------------------------------------------------------------------------------------------------------------------------|
+| Theorie | 07/10  | e) es war leider nur nach dem zusätzlichen Speicher gefragt -1 f) Normalisieren vergessen -1, Wertebereich verschieben vergessen -1 |
+| Praxis  | 09/10  | c) Zeile 305: * vec3(1, 0, 1) ist nicht Sinn der Sache bei Texturen -1 Punkt                                                        |

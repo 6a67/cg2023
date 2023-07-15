@@ -1,0 +1,461 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb} % used for math symbols
+\usepackage{mathtools}
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\title{Computer Grafik Blatt 4}
+\date{May 2023}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1.}
+
+\subsection*{(a)}
+\[
+eye = 
+\begin{pmatrix}
+0\\0\\0
+\end{pmatrix}
+x = 
+\begin{pmatrix}
+0\\0\\-32
+\end{pmatrix}  
+\overrightarrow{n} = 
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix}
+\]
+\[
+y_1 = 
+\begin{pmatrix}
+0\\8\\-24
+\end{pmatrix}
+c_{y1}= 
+\begin{pmatrix}
+0,5 \\ 0 \\ 0 
+\end{pmatrix}
+\]
+\[
+y_2 = 
+\begin{pmatrix}
+-16\\0\\-16
+\end{pmatrix}
+c_{y2}= 
+\begin{pmatrix}
+0 \\ 0,6 \\ 0 
+\end{pmatrix}
+\]
+\[
+C_a =
+\begin{pmatrix}
+0,2 & 0 & 0\\
+0 & 0,2 & 0\\
+0 & 0 & 0,2
+\end{pmatrix}
+\]
+\[
+C_d =
+\begin{pmatrix}
+0,8 & 0 & 0\\
+0 & 0,8 & 0\\
+0 & 0 & 0,8
+\end{pmatrix}
+\]
+\[
+C_s =
+\begin{pmatrix}
+0,4 & 0 & 0\\
+0 & 0,4 & 0\\
+0 & 0 & 0,4
+\end{pmatrix}
+\]
+\[
+\overrightarrow{v} = \frac{eye-x}{||eye-x||}= \frac{1}{32}\cdot
+\begin{pmatrix}
+0\\0\\32
+\end{pmatrix}=
+\begin{pmatrix}
+0\\0\\1 
+\end{pmatrix}
+\]
+
+\[
+\overrightarrow{l_1}=\frac{y_1-x}{||y_1-x||}=\frac{1}{8\sqrt{2}}\cdot
+\begin{pmatrix}
+0\\8\\8
+\end{pmatrix}=
+\begin{pmatrix}
+0\\ \frac{\sqrt{2}}{2}\\ \frac{\sqrt{2}}{2}
+\end{pmatrix}
+\]
+
+\[
+\overrightarrow{r_1}=2\overrightarrow{n}\overrightarrow{n}^T\overrightarrow{l_1}-\overrightarrow{l_1}=
+2\overrightarrow{n}\cdot
+\begin{pmatrix}
+0&0&1
+\end{pmatrix}
+\begin{pmatrix}
+0\\ \frac{\sqrt{2}}{2}\\ \frac{\sqrt{2}}{2}
+\end{pmatrix}
+-\overrightarrow{l_1}=\sqrt{2}\cdot \overrightarrow{n}-\overrightarrow{l_1}=
+\begin{pmatrix}
+0\\0 \\ \sqrt{2}
+\end{pmatrix}-
+\begin{pmatrix}
+0\\ \frac{\sqrt{2}}{2}\\ \frac{\sqrt{2}}{2}
+\end{pmatrix}=
+\begin{pmatrix}
+0\\ -\frac{\sqrt{2}}{2}\\ \frac{\sqrt{2}}{2}
+\end{pmatrix}
+\]
+
+\[
+L(x,\overrightarrow{v})=L_{y1} + L_{y2}
+\]
+
+\[
+L_{y1} = (C_a + C_d\cdot(\overrightarrow{l_1}^T\overrightarrow{n})+C_s\cdot(\overrightarrow{v}^T\overrightarrow{r_1})^s)\cdot c_{y1}
+\]
+\[
+C_{d1}=C_d\cdot(\overrightarrow{l_1}^T\overrightarrow{n})=
+C_d
+(\begin{pmatrix}
+0& \frac{\sqrt{2}}{2}& \frac{\sqrt{2}}{2}
+\end{pmatrix}
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix})=
+\begin{pmatrix}
+0,8 & 0 & 0\\
+0 & 0,8 & 0\\
+0 & 0 & 0,8
+\end{pmatrix}\cdot \frac{\sqrt{2}}{2}=
+\begin{pmatrix}
+\frac{2\sqrt{2}}{5} & 0 & 0\\
+0 & \frac{2\sqrt{2}}{5} & 0\\
+0 & 0 & \frac{2\sqrt{2}}{5}
+\end{pmatrix}
+\]
+%% C_s1
+\[
+C_{s1}=C_s\cdot(\overrightarrow{v}^T\overrightarrow{r_1})^s= C_s\cdot
+\begin{pmatrix}
+0&0&1
+\end{pmatrix}
+\begin{pmatrix}
+0\\ -\frac{\sqrt{2}}{2}\\ \frac{\sqrt{2}}{2}
+\end{pmatrix}=
+\begin{pmatrix}
+0,4 & 0 & 0\\
+0 & 0,4 & 0\\
+0 & 0 & 0,4
+\end{pmatrix}\cdot \frac{\sqrt{2}}{2}^{10}=
+\begin{pmatrix}
+\frac{1}{80} & 0 & 0\\
+0 & \frac{1}{80} & 0\\
+0 & 0 & \frac{1}{80}
+\end{pmatrix}
+\]
+%% L_1
+\[
+L_1=(
+C_a+C_{d1}+C_{s1})\cdot
+\begin{pmatrix}
+0,5\\0\\0
+\end{pmatrix}=
+\begin{pmatrix}
+\frac{17+32\sqrt{2}}{80} & 0 & 0\\
+0 &\frac{17+32\sqrt{2}}{80} & 0\\
+0 & 0 & \frac{17+32\sqrt{2}}{80}
+\end{pmatrix}\cdot
+\begin{pmatrix}
+0,5\\0\\0
+\end{pmatrix}=
+\begin{pmatrix}
+0,3890927125\\0\\0
+\end{pmatrix}
+\]
+%% l_2
+\[
+\overrightarrow{l_2}=\frac{y_2-x}{||y_2-x||}=\frac{1}{16\sqrt{2}}\cdot
+\begin{pmatrix}
+-16\\0\\16
+\end{pmatrix}=
+\begin{pmatrix}
+-\frac{\sqrt{2}}{2}\\0\\ \frac{\sqrt{2}}{2}
+\end{pmatrix}
+\]
+\[
+\overrightarrow{r_2}=2\overrightarrow{n}\overrightarrow{n}^T\overrightarrow{l_2}-\overrightarrow{l_2}=
+2\overrightarrow{n}\cdot
+\begin{pmatrix}
+0&0&1
+\end{pmatrix}
+\begin{pmatrix}
+-\frac{\sqrt{2}}{2}\\0\\ \frac{\sqrt{2}}{2}
+\end{pmatrix}-\overrightarrow{l_2}=\sqrt{2}\cdot \overrightarrow{n}-\overrightarrow{l_2} =
+\begin{pmatrix}
+0\\0 \\ \sqrt{2}
+\end{pmatrix}-
+\begin{pmatrix}
+- \frac{\sqrt{2}}{2}\\0\\ \frac{\sqrt{2}}{2}
+\end{pmatrix}=
+\begin{pmatrix}
+ \frac{\sqrt{2}}{2}\\ 0\\ \frac{\sqrt{2}}{2}
+\end{pmatrix}
+\]
+\[
+L_{y2} = (C_a + C_d\cdot(\overrightarrow{l_2}^T\overrightarrow{n})+C_s\cdot(\overrightarrow{v}^T\overrightarrow{r_2})^s)\cdot c_{y2}
+\]
+\[
+C_{d2}=C_d\cdot(\overrightarrow{l_2}^T\overrightarrow{n})=
+C_d
+(\begin{pmatrix}
+-\frac{\sqrt{2}}{2}&0& \frac{\sqrt{2}}{2}
+\end{pmatrix}
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix})=
+\begin{pmatrix}
+0,8 & 0 & 0\\
+0 & 0,8 & 0\\
+0 & 0 & 0,8
+\end{pmatrix}\cdot \frac{\sqrt{2}}{2}=
+\begin{pmatrix}
+\frac{2\sqrt{2}}{5} & 0 & 0\\
+0 & \frac{2\sqrt{2}}{5} & 0\\
+0 & 0 & \frac{2\sqrt{2}}{5}
+\end{pmatrix}
+\]\[
+C_{s2}=C_s\cdot(\overrightarrow{v}^T\overrightarrow{r_2})^s= C_s\cdot
+\begin{pmatrix}
+0&0&1
+\end{pmatrix}
+\begin{pmatrix}
+\frac{\sqrt{2}}{2}\\ 0\\ \frac{\sqrt{2}}{2}
+\end{pmatrix}=
+\begin{pmatrix}
+0,4 & 0 & 0\\
+0 & 0,4 & 0\\
+0 & 0 & 0,4
+\end{pmatrix}\cdot \frac{\sqrt{2}}{2}^{10}=
+\begin{pmatrix}
+\frac{1}{80} & 0 & 0\\
+0 & \frac{1}{80} & 0\\
+0 & 0 & \frac{1}{80}
+\end{pmatrix}
+\]
+\[
+L_2=(
+C_a+C_{d2}+C_{s2})\cdot
+\begin{pmatrix}
+0\\0,6\\0
+\end{pmatrix}=
+\begin{pmatrix}
+\frac{17+32\sqrt{2}}{80} & 0 & 0\\
+0 &\frac{17+32\sqrt{2}}{80} & 0\\
+0 & 0 & \frac{17+32\sqrt{2}}{80}
+\end{pmatrix}\cdot
+\begin{pmatrix}
+0\\0,6\\0
+\end{pmatrix}=
+\begin{pmatrix}
+0\\0,466911255\\0
+\end{pmatrix}
+\]
+\[
+L=
+\begin{pmatrix}
+0,3890927125\\0\\0
+\end{pmatrix}+
+\begin{pmatrix}
+0\\0,466911255\\0
+\end{pmatrix}=
+\begin{pmatrix}
+0,3890927125\\0,466911255\\0
+\end{pmatrix}
+\]
+
+\subsection*{(b)}
+\[
+\overrightarrow{h_1}=\frac{\overrightarrow{v}+\overrightarrow{l_1}}{||\overrightarrow{v}+\overrightarrow{l_1}||}=
+\begin{pmatrix}
+0\\ \frac{\sqrt{2}}{2}\\ \frac{2+\sqrt{2}}{2}
+\end{pmatrix} \div \sqrt{\frac{4+2\sqrt2}{2}}\cdot=
+\begin{pmatrix}
+0\\ 0,3826834324\\0,9238795325
+\end{pmatrix}
+\]
+\[
+L_{y1} = (C_a + C_d\cdot(\overrightarrow{l_1}^T\overrightarrow{n})+C_s\cdot(\overrightarrow{h1}^T\overrightarrow{n})^s)\cdot c_{y1}
+\]
+\[
+C_{s1}=C_s\cdot(\overrightarrow{h1}^T\overrightarrow{n})^s= C_s\cdot
+\begin{pmatrix}
+0& 0,3826834324&0,9238795325
+\end{pmatrix}
+\begin{pmatrix}
+0\\ 0\\ 1
+\end{pmatrix}=
+\]
+\[
+\begin{pmatrix}
+0,4 & 0 & 0\\
+0 & 0,4 & 0\\
+0 & 0 & 0,4
+\end{pmatrix}\cdot (\frac{2+\sqrt{2}}{2} \div \sqrt{\frac{4+2\sqrt2}{2}})^{20}=
+\begin{pmatrix}
+0,08210449037 & 0 & 0\\
+0 & 0,08210449037 & 0\\
+0 & 0 & 0,08210449037
+\end{pmatrix}\]
+\[
+L_1=(
+C_a+C_{d1}+C_{s1})\cdot
+\begin{pmatrix}
+0,5\\0\\0
+\end{pmatrix}=
+\begin{pmatrix}
+0,8477899153 & 0 & 0\\
+0 & 0,8477899153 & 0\\
+0 & 0 & 0,8477899153
+\end{pmatrix}\cdot
+\begin{pmatrix}
+0,5\\0\\0
+\end{pmatrix}=
+\begin{pmatrix}
+0.42389496\\0\\0
+\end{pmatrix}
+\]
+\[
+\overrightarrow{h_2}=\frac{\overrightarrow{v}+\overrightarrow{l_2}}{||\overrightarrow{v}+\overrightarrow{l_2}||}=
+\begin{pmatrix}
+-\frac{\sqrt{2}}{2}\\0\\ \frac{2+\sqrt{2}}{2}
+\end{pmatrix} \div \sqrt{\frac{4+2\sqrt2}{2}}\cdot=
+\begin{pmatrix}
+-0,3826834324\\ 0\\0,9238795325
+\end{pmatrix}
+\]\[
+C_{s2}=C_s\cdot(\overrightarrow{h2}^T\overrightarrow{n})^s= C_s\cdot
+\begin{pmatrix}
+-0,3826834324 & 0 &0,9238795325
+\end{pmatrix}
+\begin{pmatrix}
+0\\ 0\\ 1
+\end{pmatrix}=
+\]
+\[
+\begin{pmatrix}
+0,4 & 0 & 0\\
+0 & 0,4 & 0\\
+0 & 0 & 0,4
+\end{pmatrix}\cdot (\frac{2+\sqrt{2}}{2} \div \sqrt{\frac{4+2\sqrt2}{2}})^{20}=
+\begin{pmatrix}
+0,08210449037 & 0 & 0\\
+0 & 0,08210449037 & 0\\
+0 & 0 & 0,08210449037
+\end{pmatrix}\]
+\[
+L_2=(
+C_a+C_{d2}+C_{s2})\cdot
+\begin{pmatrix}
+0\\0,6\\0
+\end{pmatrix}=
+\begin{pmatrix}
+0.84778992 & 0 & 0\\
+0 & 0.84778992 & 0\\
+0 & 0 & 0.84778992
+\end{pmatrix}\cdot
+\begin{pmatrix}
+0\\0,6\\0
+\end{pmatrix}=
+\begin{pmatrix}
+0\\7,849262694\\0
+\end{pmatrix}
+\]
+\[
+L=
+\begin{pmatrix}
+0.42389496\\0\\0
+\end{pmatrix}+
+\begin{pmatrix}
+0\\0.50867395\\0
+\end{pmatrix}=
+\begin{pmatrix}
+0.42389496\\0.50867395\\0
+\end{pmatrix}
+\]
+
+\subsection*{(c)}
+\[
+a=\begin{pmatrix}
+1\\5\\-7
+\end{pmatrix}
+b=\begin{pmatrix}
+-4\\4\\-7
+\end{pmatrix}
+c=\begin{pmatrix}
+0\\0\\-7
+\end{pmatrix}
+p=\begin{pmatrix}
+0\\3\\-7
+\end{pmatrix}
+\]
+Da alle Punkte den gleichen Z-Wert haben, berechnen wir die Flächeninhalte in 2D.
+\[
+A=\frac{1}{2}det[(b-a),(c-a)]=\frac{1}{2}((-4-1)(0-5)-(0-1)(4-5))=12
+\]
+\[
+A_{\alpha}=\frac{1}{2}det[(b-p),(c-p)]=\frac{1}{2}((-4-0)(0-3)-(0-0)(4-3))=6
+\]
+\[
+A_{\beta}=\frac{1}{2}det[(c-p),(a-p)]=\frac{1}{2}((0-0)(5-3)-(1-0)(0-3))=1,5
+\]
+\[
+A_{\gamma}=\frac{1}{2}det[(a-p),(b-p)]=\frac{1}{2}((1-0)(4-3)-(-4-0)(5-3))=4,5
+\]
+\[
+\alpha = \frac{A_{\alpha}}{A}= 0,5 \;\; \beta = \frac{A_{\beta}}{A}= 0,125 \;\; \gamma = \frac{A_{\gamma}}{A}= 0,375
+\]
+\[
+\alpha\overrightarrow{n_{\alpha}}=
+\begin{pmatrix}
+0\\0\\0,5
+\end{pmatrix}
+\beta\overrightarrow{n_{\beta}}=
+\begin{pmatrix}
+-0,125\\0\\0
+\end{pmatrix}
+\gamma\overrightarrow{n_{\gamma}}=
+\begin{pmatrix}
+0\\-0,375\\0
+\end{pmatrix}
+\]
+\[
+\frac{\alpha\overrightarrow{n_{\alpha}}+\beta\overrightarrow{n_{\beta}}+\gamma\overrightarrow{n_{\gamma}}}{||\cdot||}=
+\begin{pmatrix}
+-0.19611614 \\ -0.58834841 \\ 0.78446454
+\end{pmatrix}\]
+Hier sind wir uns nicht ganz sicher, ob wir den Foliensatz/die Aufgabe richtig Verstehen. Aber 
+\[
+phong(
+\begin{pmatrix}
+0\\3\\-7
+\end{pmatrix},\begin{pmatrix}
+-0.19611614 \\ -0.58834841 \\ 0.78446454
+\end{pmatrix})=
+\begin{pmatrix}
+0.10096444\\ 0.12290578\\ 0
+\end{pmatrix}
+\]
+Nach unserem Verständnis muss die Phong Beleuchtung nur für p und die aufsummierten und normierten Normalen von a, b und c ausgewertet werden.
+
+\end{document}

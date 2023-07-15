@@ -1,0 +1,4 @@
+|         | Punkte | Anmerkung                                                                                                                                                         |
+|---------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Theorie | 07/10  | es wäre schön gewesen, wenn eure Koordinatensysteme auch Achsenbeschriftungen hätten!  d) verrechnet bei b_2^1, aber danach folgerichtig -> -1 Punkt  h) fehlt -2 |
+| Praxis  | 09/10  | a) Ihr habt nicht alle Zwischenpunkte gezeichnet -1                                                                                                               |

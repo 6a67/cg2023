@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb} % used for math symbols
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{wasysym}
+\usepackage{float}
+\usepackage{minted}
+
+
+\title{Computer Grafik Blatt 8}
+\date{June 2023}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1.}
+
+\subsection*{(a)}
+
+Gesucht: In wie vielen Faces liegt im Durchschnitt ein Vertex bei einem Hexagon-Netz? \\
+
+Anzahl der Halbkanten: $H = 2 \cdot E$ \\
+$6F = H \Rightarrow 6F = 2E \Rightarrow 3F = E$ \\
+
+Mit Euler Formel nach E umstellen: \\
+\[
+    \begin{aligned}
+        V - E + F &= 2 \cdot (1 - g) \\
+        6V - 6E + 6F &= 12 \cdot (1 - g) \\
+        6V - 6E + 2E &= 12 \cdot (1 - g) \\
+        6V - 4E &= 12 \cdot (1 - g) \\
+        4E &= 6V - 12 \cdot (1 - g) \\
+        E &= 1.5V - 3 \cdot (1 - g) \\
+        E &= 1.5V - c \\
+    \end{aligned}
+\]
+Da jede Kante in zwei Vertices endet, gibt es ca. 3 Kanten pro Vertex. \\
+
+\subsection*{(b)}
+
+\subsection*{(c)}
+Anzahl der Vertices: 14 \\
+Anzahl der Faces: 17 \\
+
+Annahme: Vertices sind zwei dimensional $\Rightarrow$ Zwei Gleitkommazahlen pro Vertex $\Rightarrow$ 16 Bytes pro Vertex \\
+\[
+    \begin{aligned}
+        \text{Anzahl der Faces} \cdot \text{Anzahl der Vertices pro Face} \cdot \text{Bytes pro Vertex} &= \text{Bytes pro Mesh} \\    
+        17 \cdot 3 \cdot 16 &= 816 \text{ Bytes pro Mesh} \\
+    \end{aligned}
+\]
+
+\subsection*{(d)}
+\[
+    \begin{aligned}
+        \text{Bytes pro Vertex} \cdot \text{Anzahl der Vertices} + \text{Anzahl der Faces} \cdot \text{Bytes pro Face} &= \text{Bytes pro Mesh} \\
+        16 \cdot 14 + 17 \cdot 3 \cdot 4 &= 428 \text{ Bytes pro Mesh} \\
+    \end{aligned}
+\]
+
+\subsection*{(e)}
+\[
+    \begin{aligned}
+        \text{out} &= \text{Anzahl der Vertices} \cdot \text{Größe eines Indexes} \\
+        &= 14 \cdot 4 = 56 \text{ Bytes} \\
+        \text{next} &= \text{Anzahl der Halbkanten} \cdot \text{Größe eines Indexes} \\
+        &= 3 \cdot \text{Anzahl der Faces} \cdot \text{Größe eines Indexes} \\
+        &= 3 \cdot 17 \cdot 4 = 204 \text{ Bytes} \\
+        \text{opposite} &= \text{Anzahl der Halbkanten} \cdot \text{Größe eines Indexes} \\
+        &= 3 \cdot 17 \cdot 4 = 204 \text{ Bytes} \\
+        \text{face} &= \text{Anzahl der Faces} \cdot \text{Anzahl der Vertices pro Face} \cdot \text{Größe eines Indexes} \\
+        &= 17 \cdot 3 \cdot 4 = 204 \text{ Bytes} \\
+        \text{to} &= \text{Anzahl der Halbkanten} \cdot \text{Größe eines Indexes} \\
+        &= 3 \cdot 17 \cdot 4 = 204 \text{ Bytes} \\
+        \text{halfedge} &= \text{Anzahl der Faces} \cdot \text{Größe eines Indexes} \\
+        &= 17 \cdot 4 = 68 \text{ Bytes} \\
+    \end{aligned}
+\]
+
+\subsection*{(f)}
+Links: 3 \\ 
+Mitte: 3
+
+\end{document}
